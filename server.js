@@ -100,7 +100,8 @@ app.post("/generate-voice", async (req, res) => {
   }
 });
 
+console.log("🔑 Token dari env:", process.env.REPLICATE_API_TOKEN ? "Terdeteksi ✅" : "Tidak ada ❌");
+
 app.listen(PORT, () => {
   console.log(`✅ Server backend berjalan di http://localhost:${PORT}`);
 });
-
