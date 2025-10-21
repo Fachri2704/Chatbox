@@ -30,6 +30,7 @@ async function waitForPrediction(predictionUrl, token) {
     output = data.output;
 
     if (status === "failed" || status === "canceled") {
+      console.error("❌ Prediction failed data:", data);
       throw new Error(`Prediksi gagal dengan status: ${status}`);
     }
 
@@ -62,7 +63,7 @@ app.post("/generate-voice", async (req, res) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          input: { prompt: text, voice: "Rachel" },
+          input: { prompt: text},
         }),
       }
     );
@@ -105,3 +106,4 @@ console.log("🔑 Token dari env:", process.env.REPLICATE_API_TOKEN ? "Terdeteks
 app.listen(PORT, () => {
   console.log(`✅ Server backend berjalan di http://localhost:${PORT}`);
 });
+
